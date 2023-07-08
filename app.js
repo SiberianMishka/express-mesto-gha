@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const { errors } = require('celebrate');
-const { handleErrors, validateSignUp, validateSignIn } = require('./middlewares/errors');
+const { handleErrors } = require('./middlewares/errors');
+const { validateSignUp, validateSignIn } = require('./middlewares/validation');
 const { createUser, login } = require('./controllers/users');
 const NotFoundError = require('./errors/not-found-err');
 const auth = require('./middlewares/auth');
@@ -38,13 +39,13 @@ app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// подключить логгер запросов до обработчиков всех роутов
+// app.use(requestLogger);
+
 app.post('/signup', validateSignUp, createUser);
 app.post('/signin', validateSignIn, login);
 
 app.use(auth);
-
-// подключить логгер запросов до обработчиков всех роутов
-// app.use(requestLogger);
 
 app.use(router);
 

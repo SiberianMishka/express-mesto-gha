@@ -20,9 +20,9 @@ const createCard = (req, res, next) => {
       if (err instanceof mongoose.Error.ValidationError) {
         const error = new BadRequestError('Переданы некорректные данные при создании карточки');
         next(error);
-      } else {
-        next(err);
+        return;
       }
+      next(err);
     });
 };
 
@@ -51,9 +51,9 @@ const deleteCard = (req, res, next) => {
       if (err instanceof mongoose.Error.CastError) {
         const error = new NotFoundError('Переданы некорректные данные при удалении карточки');
         next(error);
-      } else {
-        next(err);
+        return;
       }
+      next(err);
     });
 };
 
@@ -74,9 +74,9 @@ const setCardLike = (req, res, next) => {
       if (err instanceof mongoose.Error.CastError) {
         const error = new BadRequestError('Переданы некорректные данные для постановки лайка');
         next(error);
-      } else {
-        next(err);
+        return;
       }
+      next(err);
     });
 };
 
@@ -97,9 +97,9 @@ const deleteCardLike = (req, res, next) => {
       if (err instanceof mongoose.Error.CastError) {
         const error = new BadRequestError('Переданы некорректные данные для снятии лайка');
         next(error);
-      } else {
-        next(err);
+        return;
       }
+      next(err);
     });
 };
 

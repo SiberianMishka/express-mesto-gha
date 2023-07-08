@@ -42,10 +42,12 @@ const createUser = (req, res, next) => {
       if (err.code === 11000) {
         const error = new ConflictEmailError('Пользователь с таким email уже существует');
         next(error);
+        return;
       }
       if (err instanceof mongoose.Error.ValidationError) {
         const error = new BadRequestError('Переданы некорректные данные при создании пользователя');
         next(error);
+        return;
       }
       next(err);
     });
@@ -60,6 +62,7 @@ const getUserById = (req, res, next) => {
       if (err instanceof mongoose.Error.CastError) {
         const error = new BadRequestError('Передан некорректный _id пользователя');
         next(error);
+        return;
       }
       next(err);
     });
@@ -93,6 +96,7 @@ const updateUserProfile = (req, res, next) => {
       if (err instanceof mongoose.Error.ValidationError) {
         const error = new BadRequestError('Переданы некорректные данные при обновлении профиля');
         next(error);
+        return;
       }
       next(err);
     });
@@ -114,6 +118,7 @@ const updateUserAvatar = (req, res, next) => {
       if (err instanceof mongoose.Error.ValidationError) {
         const error = new BadRequestError('Переданы некорректные данные при обновлении аватара');
         next(error);
+        return;
       }
       next(err);
     });
