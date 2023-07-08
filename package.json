@@ -1,24 +1,39 @@
 {
   "name": "express-mesto-gha",
-  "author": "Ivan Stremaus",
   "version": "0.1.0",
   "description": "backend for react-mesto",
   "main": "app.js",
-  "private": true,
-  "dependencies": {
-    "express": "^4.18.2",
-    "mongoose": "^7.1.0",
-    "validator": "^13.9.0"
-  },
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "test": "jest"
+  },
+  "author": "Ivan Stremaus",
+  "license": "ISC",
+  "homepage": "https://github.com/SiberianMishka/express-mesto-gha",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SiberianMishka/express-mesto-gha.git"
+  },
+  "private": true,
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "celebrate": "^15.0.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.7.0",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.3.2",
+    "validator": "^13.9.0"
   },
   "devDependencies": {
     "eslint": "^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.2",
+    "jest": "^29.5.0",
     "nodemon": "^2.0.22"
   }
 }
